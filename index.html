@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>My Website </title>
+<link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+<div id="sidebar">
+ <button id="togglebtn">☰</button>   
+ <p>Home</p>
+ <p>About</p>
+ <p>Contact</p>
+</div>
+
+
+<div id="main">
+<h1>Welcome</h1>
+<p>this is my website.</p>
+</div>
+<script>
+const btn = document.getElementById('togglebtn');
+const sidebar = document.getElementById('sidebar');
+
+btn.addEventListener('click', function() {
+sidebar.classList.toggle('open');
+
+});
+
+</script>
+
+
+
+</body>
+</html>

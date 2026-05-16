@@ -1,0 +1,34 @@
+body{
+  display: flex;
+  margin: 0;
+}
+
+#sidebar {
+  width: 60px;
+  background: #1a1a1a;
+  height: 100vh;
+  padding: 20px 10px;
+}
+
+#sidebar p {
+ color: white;
+ margin: 20px 0;
+}
+
+#main {
+ padding:  30px;
+}
+#toggleBtn{
+   background: none;
+    border:none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    margin-bottom: 20px;
+      }
+
+    #sidebar.open {
+      
+        width: 180px;
+
+    }  
