@@ -5,29 +5,59 @@
 </head>
 <body>
 <div id="sidebar">
- <button id="togglebtn">☰</button>   
- <p>Home</p>
- <p>About</p>
- <p>Contact</p>
+ <button id="togglebtn">☰</button>
+ 
+ <div class="nav-item" onclick="showpage('home')">
+    <span class="icon"></span>
+    <span class="label">home</span>
 </div>
 
-
-<div id="main">
-<h1>Welcome</h1>
-<p>this is my website.</p>
+<div class="nav-item" onclick="showpage('about')">
+  <span class="icon"></span>
+  <span class="label">About</span>
 </div>
+<div class="nav-item" onclick="showpage('contact')">
+  <span  class="icon"></span>
+  <span  class="label">contact</span>
+</div>
+</div>
+
+<div id="main">  
+<div id="home" class="page">
+    <h1>home</h1>
+    <p>Welcome to my website </p>
+    </div>
+
+  <div id="about"  class="page">
+    <h1>About</h1>
+  <p>this is the about page.</p>
+  </div>
+
+  <div id ="contact"  class="page">
+    <h1>Contact</h1>
+    <p>Contact me herez.</p>
+  </div>
+</div>
+
 <script>
-const btn = document.getElementById('togglebtn');
-const sidebar = document.getElementById('sidebar');
+  const  btn =document.getElementById('togglebtn');
+  const sidebar = document.getElementById('sidebar');
 
-btn.addEventListener('click', function() {
-sidebar.classList.toggle('open');
+  btn.addEventListener('click', function() {
+     sidebar.classList.toggle('open');
+  });
 
-});
+  function showpage(pageId) {
+    document.querySelectorAll('.page').forEach (function(page){
+   page.style.display = 'none';
 
-</script>
+    });
 
+    document.getElementById(pageId).style.display = 'block';
+}
 
+showpage('home');
 
+ </script> 
 </body>
 </html>
