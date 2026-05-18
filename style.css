@@ -4,20 +4,16 @@ body{
 }
 
 #sidebar {
-  width: 60px;
+  width: 10%;
+  min-width: 60px;
   background: #1a1a1a;
   height: 100vh;
-  padding: 20px 10px;
+  padding: 20px 0;
+  transition: width 0.3s ease;
+  overflow: hidden;
 }
 
-#sidebar p {
- color: white;
- margin: 20px 0;
-}
 
-#main {
- padding:  30px;
-}
 #toggleBtn{
    background: none;
     border:none;
@@ -25,10 +21,49 @@ body{
     font-size: 22px;
     cursor: pointer;
     margin-bottom: 20px;
-      }
+    padding: 0 18px;
+    display: block;
+    }
 
-    #sidebar.open {
-      
-        width: 180px;
+    .nav-item{
+      display: flex;
+      align-items: center;
+      padding: 12px 18px ;
+      color: white;
+      gap:12px;
+      white-space: nowrap;
+      cursor: pointer;
+}
+  .nav-item:hover {
+     background: #333;
+}
 
-    }  
+.icon {
+   font: size 20px;
+   flex-shrink:0;
+}
+.label{
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+ #sidebar.open {
+      width: 220px;
+ }  
+ #sidebar.open .label {
+   opacity: 1;
+}
+
+#main {
+  padding: 30 px;
+  flex: 1;
+}
+@media(max-width: 600px) {
+#sidebar {
+width: 60px;
+min-width:  60px;
+}
+#sidebar.open {
+  width: 180px;
+}
+
+}
