@@ -3,24 +3,41 @@
 <title>My Website </title>
 <link rel="stylesheet" href="style.css"> 
 </head>
-<body>
+<body class="light">
+
 <div id="sidebar">
- <button id="togglebtn">☰</button>
- 
- <div class="nav-item" onclick="showpage('home')">
-    <span class="icon"></span>
-    <span class="label">home</span>
+  <button id="toggleBtn">&#9776;</button>
+
+  <div class="nav-item active" onclick="showPage('home', this)">
+    <span class="icon">&#8962;</span>
+    <span class="label">Home</span>
+  </div>
+
+  <div class="nav-item" onclick="showPage('about', this)">
+    <span class="icon">&#128100;</span>
+    <span class="label">About</span>
+  </div>
+
+  <div class="nav-item" onclick="showPage('contact', this)">
+    <span class="icon">&#128222;</span>
+    <span class="label">Contact</span>
+  </div>
 </div>
 
-<div class="nav-item" onclick="showpage('about')">
-  <span class="icon"></span>
-  <span class="label">About</span>
+<div id="wrapper">
+
+  <div id="header">
+    <span id="pageTitle">Home</span>
+<div id="userMenu">
+  <button id="userBtn">user</button>
+  <div id="dropdown"> 
+    <div class="dropdown-item">settings</div>
+    <div class="dropdown-item">logout</div>
+  </div>
 </div>
-<div class="nav-item" onclick="showpage('contact')">
-  <span  class="icon"></span>
-  <span  class="label">contact</span>
-</div>
-</div>
+<button id="themeBtn">Dark</button>
+  </div>
+
 
 <div id="main">  
 <div id="home" class="page">
@@ -40,24 +57,61 @@
 </div>
 
 <script>
-  const  btn =document.getElementById('togglebtn');
+  // Sidebar toggle
+  const btn = document.getElementById('toggleBtn');
   const sidebar = document.getElementById('sidebar');
-
   btn.addEventListener('click', function() {
-     sidebar.classList.toggle('open');
+    sidebar.classList.toggle('open');
   });
 
-  function showpage(pageId) {
-    document.querySelectorAll('.page').forEach (function(page){
-   page.style.display = 'none';
-
+  // Page switch — FIXED
+  function showPage(pageId, clickedItem) {
+    // Ella pages hide cheyyuka
+    document.querySelectorAll('.page').forEach(function(page) {
+      page.style.display = 'none';
     });
-
+    // Select cheyyatha maathram show cheyyuka
     document.getElementById(pageId).style.display = 'block';
-}
 
-showpage('home');
+    // Active class maattuka
+    document.querySelectorAll('.nav-item').forEach(function(item) {
+      item.classList.remove('active');
+    });
+    clickedItem.classList.add('active');
 
- </script> 
+    // Header title maattuka
+    document.getElementById('pageTitle').textContent =
+      clickedItem.querySelector('.label').textContent;
+  }
+
+  // Default home maathram show cheyyuka
+  document.querySelectorAll('.page').forEach(function(page) {
+    page.style.display = 'none';
+  });
+  document.getElementById('home').style.display = 'block';
+
+  // User dropdown
+  const userBtn = document.getElementById('userBtn');
+  const dropdown = document.getElementById('dropdown');
+  userBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    dropdown.classList.toggle('show');
+  });
+  document.addEventListener('click', function() {
+    dropdown.classList.remove('show');
+  });
+
+  // Dark / Light theme
+  const themeBtn = document.getElementById('themeBtn');
+  themeBtn.addEventListener('click', function() {
+    document.body.classList.toggle('dark');
+    document.body.classList.toggle('light');
+    if (document.body.classList.contains('dark')) {
+      themeBtn.textContent = ' Light';
+    } else {
+      themeBtn.textContent = 'Dark';
+    }
+  });
+</script>
 </body>
-</html>
+</html>   
